@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ $site := .Site }}
+{{ $termPages := .Pages }}
+{{ $tagGroups := sort .Site.Params.tagGroups "weight" }}
+{{ $visibleCount := 0 }}
+{{ range $page := $termPages }}
+  {{ $sectionConfig := index $site.Params.sections $page.Section }}
+  {{ if and $sectionConfig.enabled (ne $page.Section "nabokov") }}{{ $visibleCount = add $visibleCount 1 }}{{ end }}
+{{ end }}
+
+<section class="list-page">
+  <div class="list-header">
+    <h1># {{ .Title }}</h1>
+    <p>{{ i18n "relatedCount" (dict "Count" $visibleCount) }}</p>
+  </div>
+
+  {{ range $group := $tagGroups }}
+    {{ $groupPages := slice }}
+    {{ range $page := $termPages }}
+      {{ $sectionConfig := index $site.Params.sections $page.Section }}
+      {{ if and $sectionConfig.enabled (ne $page.Section "nabokov") (eq $sectionConfig.tagGroup $group.id) }}
+        {{ $groupPages = $groupPages | append $page }}
+      {{ end }}
+    {{ end }}
+
+    {{ if gt (len $groupPages) 0 }}
+    <section class="taxonomy-group" id="tag-group-{{ $group.id }}">
+      <div class="taxonomy-group-header">
+        <h2>{{ $group.label }}</h2>
+        <span>{{ i18n "postCount" (dict "Count" (len $groupPages)) }}</span>
+      </div>
+      <div class="post-list">
+        {{ range sort $groupPages "Date" "desc" }}
+        <article class="post-item">
+          <div class="post-item-meta">
+            {{ $sectionPath := printf "%s/" .Section }}
+            <a href="{{ $sectionPath | relLangURL }}" class="taxonomy-section-link">
+              {{ with index $site.Params.sections .Section }}{{ .navLabel }}{{ else }}{{ .Section }}{{ end }}
+            </a>
+            <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+          </div>
+          <h3 class="post-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.summary }}
+            <p class="post-item-summary">{{ . }}</p>
+          {{ else }}
+            {{ with .Params.quote }}<p class="post-item-summary">{{ . }}</p>{{ end }}
+          {{ end }}
+        </article>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+  {{ end }}
+</section>
+{{ end }}

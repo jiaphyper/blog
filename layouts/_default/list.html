@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ $sectionConfig := index .Site.Params.sections .Section }}
+{{ $tagAnchor := printf "#tag-group-%s" $sectionConfig.tagGroup }}
+<section class="list-page">
+  <div class="list-header">
+    <h1>{{ with $sectionConfig }}{{ .listTitle | default .navLabel }}{{ else }}{{ .Title }}{{ end }}</h1>
+    {{ $noun := i18n "defaultArticle" }}
+    {{ with $sectionConfig }}{{ $noun = .listNoun | default $noun }}{{ end }}
+    <p>{{ i18n "sectionCount" (dict "Count" (len .Pages) "Noun" $noun) }}</p>
+  </div>
+  <div class="post-list">
+    {{ range .Pages }}
+    <article class="post-item">
+      <div class="post-item-meta">
+        {{ if $sectionConfig.listMetaField }}
+        <span class="post-tag {{ if eq $sectionConfig.badgeVariant "paper" }}post-tag-paper{{ end }}">
+          {{ with index .Params $sectionConfig.listMetaField }}{{ . }}{{ else }}{{ $sectionConfig.listMetaFallback }}{{ end }}
+        </span>
+        {{ else }}
+        {{ range first 1 (.GetTerms "tags") }}<a href="{{ .RelPermalink }}{{ $tagAnchor }}" class="post-tag">{{ .LinkTitle }}</a>{{ end }}
+        {{ end }}
+        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      </div>
+      <h3 class="post-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{ with .Params.summary }}<p class="post-item-summary">{{ . }}</p>{{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

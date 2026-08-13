@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{ $sectionConfig := index .Site.Params.sections .Section }}
+{{ $tagGroup := "general" }}
+{{ with $sectionConfig }}{{ $tagGroup = .tagGroup }}{{ end }}
+{{ $tagAnchor := printf "#tag-group-%s" $tagGroup }}
+<article class="post-page">
+  <header class="post-header">
+    <div class="post-header-meta">
+      {{ if .Section }}
+      {{ $sectionPath := printf "%s/" .Section }}
+      <a href="{{ $sectionPath | relLangURL }}" class="back-link">← {{ with $sectionConfig }}{{ .navLabel }}{{ else }}{{ i18n "back" }}{{ end }}</a>
+      {{ else }}
+      <a href="{{ "" | relLangURL }}" class="back-link">← {{ i18n "backHome" }}</a>
+      {{ end }}
+      {{ if not .Date.IsZero }}<span class="post-date">{{ .Date.Format "2006-01-02" }}</span>{{ end }}
+    </div>
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="post-summary">{{ . }}</p>{{ end }}
+
+    {{ if eq $sectionConfig.badgeVariant "paper" }}
+    <div class="paper-meta">
+      {{ with .Params.journal }}<span class="paper-journal">{{ . }}</span>{{ end }}
+      {{ with .Params.authors }}<span class="paper-authors">{{ . }}</span>{{ end }}
+      {{ with .Params.year }}<span class="paper-year">{{ . }}</span>{{ end }}
+      {{ with .Params.doi }}
+      <a href="https://doi.org/{{ . }}" target="_blank" class="paper-doi">DOI →</a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .GetTerms "tags" }}
+    <div class="post-tags">
+      {{ if eq $.Section "nabokov" }}
+        {{ range . }}<span class="post-tag">{{ .LinkTitle }}</span>{{ end }}
+      {{ else }}
+        {{ range . }}<a href="{{ .RelPermalink }}{{ $tagAnchor }}" class="post-tag">{{ .LinkTitle }}</a>{{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

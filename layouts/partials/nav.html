@@ -1,0 +1,42 @@
+{{ $sections := sort .Site.Params.sections "weight" }}
+{{ $enabledSections := slice }}
+{{ range $section := $sections }}
+  {{ $sectionPages := where $.Site.RegularPages "Section" $section.id }}
+  {{ if and $section.enabled (gt (len $sectionPages) 0) }}
+    {{ $enabledSections = $enabledSections | append $section }}
+  {{ end }}
+{{ end }}
+{{ $tagsEnabled := .Site.Params.tags.enabled }}
+{{ $hasNavLinks := or $tagsEnabled (gt (len $enabledSections) 0) }}
+<nav class="nav">
+  <a href="{{ "" | relLangURL }}" class="nav-logo">{{ .Site.Title }}</a>
+  <div class="nav-controls">
+  {{ if $hasNavLinks }}
+  <ul class="nav-links">
+    {{ range $enabledSections }}{{ $sectionPath := printf "%s/" .id }}<li><a href="{{ $sectionPath | relLangURL }}">{{ .navLabel }}</a></li>{{ end }}
+    {{ if $tagsEnabled }}<li><a href="{{ "tags/" | relLangURL }}">{{ .Site.Params.tags.navLabel }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+  {{ range first 1 .Translations }}
+  <a href="{{ .RelPermalink }}" class="language-switch" hreflang="{{ .Language.LanguageCode }}" lang="{{ .Language.LanguageCode }}">
+    {{ if eq .Language.Lang "en" }}EN{{ else }}中文{{ end }}
+  </a>
+  {{ end }}
+  <button type="button" class="theme-toggle" id="themeToggle"
+    data-light-label="{{ i18n "themeToLight" }}" data-dark-label="{{ i18n "themeToDark" }}"
+    aria-label="{{ i18n "themeSwitch" }}" title="{{ i18n "themeSwitch" }}">
+    <i class="fa-solid fa-sun" id="themeIcon" aria-hidden="true"></i>
+  </button>
+  {{ if $hasNavLinks }}
+  <button class="nav-menu-btn" id="navMenuBtn" aria-label="{{ i18n "menu" }}">
+    <span></span><span></span><span></span>
+  </button>
+  {{ end }}
+  </div>
+</nav>
+{{ if $hasNavLinks }}
+<div class="nav-mobile" id="navMobile">
+  {{ range $enabledSections }}{{ $sectionPath := printf "%s/" .id }}<a href="{{ $sectionPath | relLangURL }}">{{ .navLabel }}</a>{{ end }}
+  {{ if $tagsEnabled }}<a href="{{ "tags/" | relLangURL }}">{{ .Site.Params.tags.navLabel }}</a>{{ end }}
+</div>
+{{ end }}

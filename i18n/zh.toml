@@ -1,0 +1,73 @@
+[all]
+other = "全部"
+
+[menu]
+other = "菜单"
+
+[blogOverview]
+other = "个人博客概览"
+
+[backHome]
+other = "首页"
+
+[back]
+other = "返回"
+
+[backAbout]
+other = "About Me"
+
+[themeSwitch]
+other = "切换颜色模式"
+
+[themeToLight]
+other = "切换到浅色模式"
+
+[themeToDark]
+other = "切换到深色模式"
+
+[tagsTitle]
+other = "标签"
+
+[tagsDescription]
+other = "按栏目和主题浏览内容"
+
+[tagCount]
+one = "{{ .Count }} 个标签"
+other = "{{ .Count }} 个标签"
+
+[postCount]
+one = "{{ .Count }} 篇"
+other = "{{ .Count }} 篇"
+
+[relatedCount]
+one = "{{ .Count }} 篇相关内容"
+other = "{{ .Count }} 篇相关内容"
+
+[sectionCount]
+one = "{{ .Count }} 篇{{ .Noun }}"
+other = "{{ .Count }} 篇{{ .Noun }}"
+
+[defaultArticle]
+other = "文章"
+
+[nabokovTitle]
+other = "思想的碎片"
+
+[nabokovAbout]
+other = "纳博科夫用卡片写小说——他把想法、场景、句子写在索引卡上，随时取用、重新排列。这里是我的卡片库：从书里、论文里、视频里摘录的句子，以及自己写下的感悟片段。不成体系，但每一张都是真实的触动。"
+
+[drawCards]
+other = "随机取用 3–5 张"
+
+[drawHint]
+other = "每次随机从卡片库中抽取"
+
+[todayCards]
+other = "今日卡片"
+
+[drawAgain]
+other = "再抽一次 →"
+
+[allCards]
+one = "全部卡片 · {{ .Count }} 张"
+other = "全部卡片 · {{ .Count }} 张"

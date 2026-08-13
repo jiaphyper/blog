@@ -1,0 +1,93 @@
+{{ define "main" }}
+
+{{ $sections := sort .Site.Params.sections "weight" }}
+{{ $enabledSections := slice }}
+{{ range $section := $sections }}
+  {{ $sectionPages := where $.Site.RegularPages "Section" $section.id }}
+  {{ if and $section.enabled (gt (len $sectionPages) 0) }}
+    {{ $enabledSections = $enabledSections | append $section }}
+  {{ end }}
+{{ end }}
+{{ $hasHomeActions := gt (len $enabledSections) 0 }}
+
+<section class="home-hero">
+  <div class="home-hero-copy">
+    <div class="home-eyebrow">
+      <span class="eyebrow-dot"></span>
+      {{ .Site.Params.home.eyebrow }}
+    </div>
+    <h1 class="home-title">{{ .Site.Params.home.title }}</h1>
+    <p class="home-desc">{{ .Site.Params.home.description }}<br>{{ .Site.Params.home.subdescription }}</p>
+    {{ if $hasHomeActions }}
+    <div class="home-actions">
+      {{ range $index, $section := $enabledSections }}
+      {{ $sectionPath := printf "%s/" $section.id }}
+      <a href="{{ $sectionPath | relLangURL }}" class="btn {{ if eq $index 0 }}btn-primary{{ else }}btn-ghost{{ end }}">{{ $section.buttonLabel }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  <aside class="home-field-notes" aria-label="{{ i18n "blogOverview" }}">
+    <div class="field-notes-topline">
+      <span>{{ .Site.Params.home.asideLabel }}</span>
+      <!-- <span class="field-notes-index">№ 01</span> -->
+    </div>
+    <blockquote>{{ .Site.Params.home.asideQuote }}</blockquote>
+    <p class="field-notes-note">{{ .Site.Params.home.asideNote }}</p>
+    <div class="field-notes-topics">
+      {{ range .Site.Params.home.asideTopics }}<span>{{ . }}</span>{{ end }}
+    </div>
+    <span class="field-notes-mark" aria-hidden="true">Momenta</span>
+  </aside>
+</section>
+
+{{ range $section := $enabledSections }}
+  {{ $sectionPages := where $.Site.RegularPages "Section" $section.id }}
+  {{ $homeLimit := $section.homeLimit | default 4 }}
+  {{ if eq $section.homeStyle "nabokov" }}
+<section class="home-nabokov">
+  <div class="home-nabokov-inner">
+    <div class="home-nabokov-text">
+      <div class="nabokov-eyebrow">{{ $section.homeEyebrow }}</div>
+      <h2>{{ $section.homeTitle }}</h2>
+      <p>{{ $section.homeDescription }}</p>
+      {{ $sectionPath := printf "%s/" $section.id }}
+      <a href="{{ $sectionPath | relLangURL }}" class="btn btn-primary">{{ $section.homeButtonLabel }}</a>
+    </div>
+    <div class="home-nabokov-cards">
+      {{ range first $homeLimit $sectionPages.ByDate.Reverse }}
+      <div class="nabokov-teaser-card">
+        <p class="ntc-quote">{{ .Params.quote }}</p>
+        {{ with .Params.source }}<span class="ntc-source">— {{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+  {{ else }}
+<section class="home-section">
+  <div class="home-section-header">
+    <h2>{{ $section.homeTitle | default $section.navLabel }}</h2>
+    {{ $sectionPath := printf "%s/" $section.id }}
+    <a href="{{ $sectionPath | relLangURL }}" class="link-all">{{ i18n "all" }} →</a>
+  </div>
+  <div class="post-list">
+    {{ range first $homeLimit $sectionPages.ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="post-item">
+      <div class="home-post-heading">
+        <h3 class="post-item-title">{{ .Title }}</h3>
+        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      </div>
+      {{ $secondaryField := $section.secondaryField | default "summary" }}
+      {{ with index .Params $secondaryField }}
+      <p class="{{ if eq $section.secondaryStyle "journal" }}post-item-journal{{ else }}post-item-summary{{ end }}">{{ . }}</p>
+      {{ end }}
+    </a>
+    {{ end }}
+  </div>
+</section>
+  {{ end }}
+{{ end }}
+
+{{ end }}

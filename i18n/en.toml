@@ -1,0 +1,73 @@
+[all]
+other = "All"
+
+[menu]
+other = "Menu"
+
+[blogOverview]
+other = "Personal blog overview"
+
+[backHome]
+other = "Home"
+
+[back]
+other = "Back"
+
+[backAbout]
+other = "About Me"
+
+[themeSwitch]
+other = "Switch color mode"
+
+[themeToLight]
+other = "Switch to light mode"
+
+[themeToDark]
+other = "Switch to dark mode"
+
+[tagsTitle]
+other = "Tags"
+
+[tagsDescription]
+other = "Browse by section and topic"
+
+[tagCount]
+one = "{{ .Count }} tag"
+other = "{{ .Count }} tags"
+
+[postCount]
+one = "{{ .Count }} post"
+other = "{{ .Count }} posts"
+
+[relatedCount]
+one = "{{ .Count }} related post"
+other = "{{ .Count }} related posts"
+
+[sectionCount]
+one = "{{ .Count }} {{ .Noun }}"
+other = "{{ .Count }} {{ .Noun }}"
+
+[defaultArticle]
+other = "posts"
+
+[nabokovTitle]
+other = "Fragments of Thought"
+
+[nabokovAbout]
+other = "Nabokov wrote novels on index cards, capturing ideas, scenes, and sentences so they could be revisited and rearranged. This is my own card library: passages from books, papers, and videos, together with short reflections. They are fragments, but each one records a genuine moment of recognition."
+
+[drawCards]
+other = "Draw 3–5 random cards"
+
+[drawHint]
+other = "Randomly selected from the card library"
+
+[todayCards]
+other = "Today's Cards"
+
+[drawAgain]
+other = "Draw again →"
+
+[allCards]
+one = "All cards · {{ .Count }} card"
+other = "All cards · {{ .Count }} cards"

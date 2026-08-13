@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{ $site := .Site }}
+{{ $terms := .Pages.ByTitle }}
+{{ $tagGroups := sort .Site.Params.tagGroups "weight" }}
+<section class="list-page">
+  <div class="list-header">
+    <h1>{{ i18n "tagsTitle" }}</h1>
+    <p>{{ i18n "tagsDescription" }}</p>
+  </div>
+
+  {{ range $group := $tagGroups }}
+    {{ $tagItems := slice }}
+    {{ range $term := $terms }}
+      {{ $groupCount := 0 }}
+      {{ range $page := $term.Pages }}
+        {{ $sectionConfig := index $site.Params.sections $page.Section }}
+        {{ if and $sectionConfig.enabled (ne $page.Section "nabokov") (eq $sectionConfig.tagGroup $group.id) }}
+          {{ $groupCount = add $groupCount 1 }}
+        {{ end }}
+      {{ end }}
+      {{ if gt $groupCount 0 }}
+        {{ $tagItems = $tagItems | append (dict "term" $term "count" $groupCount) }}
+      {{ end }}
+    {{ end }}
+
+    {{ if gt (len $tagItems) 0 }}
+    <section class="tag-group-section">
+      <div class="tag-group-header">
+        <h2>{{ $group.label }}</h2>
+        <span>{{ i18n "tagCount" (dict "Count" (len $tagItems)) }}</span>
+      </div>
+      <div class="tag-index-grid">
+        {{ range $tagItems }}
+        <a href="{{ .term.RelPermalink }}#tag-group-{{ $group.id }}" class="tag-index-item">
+          <span># {{ .term.LinkTitle }}</span>
+          <span class="tag-index-count">{{ i18n "postCount" (dict "Count" .count) }}</span>
+        </a>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+  {{ end }}
+</section>
+{{ end }}

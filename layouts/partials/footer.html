@@ -1,0 +1,33 @@
+<footer class="footer">
+  {{ $footer := .Site.Params.footer }}
+  {{ $enabledContacts := where $footer.contacts "enabled" true }}
+  <div class="footer-inner">
+    <p class="footer-copy">© {{ now.Year }} {{ $footer.copyright }}</p>
+    <div class="footer-links">
+      {{ if gt (len $enabledContacts) 0 }}
+      <div class="footer-social">
+        <span class="footer-social-label">{{ $footer.contactLabel }}</span>
+        <div class="footer-social-icons">
+          {{ range $enabledContacts }}
+            {{ $hasImage := ne .imageURL "" }}
+            {{ if .url }}
+            <a href="{{ .url }}" class="social-icon {{ if $hasImage }}social-icon-image{{ end }}" title="{{ .label }}"
+              {{ if .newTab }}target="_blank" rel="noopener"{{ end }}>
+              {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+              {{ if $hasImage }}<span class="contact-image-popup"><img src="{{ .imageURL }}" alt="{{ .label }}"></span>{{ end }}
+            </a>
+            {{ else }}
+            <span class="social-icon {{ if $hasImage }}social-icon-image{{ end }}" title="{{ .label }}">
+              {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+              {{ if $hasImage }}<span class="contact-image-popup"><img src="{{ .imageURL }}" alt="{{ .label }}"></span>{{ end }}
+            </span>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+      {{ if $footer.aboutEnabled }}<a href="{{ $footer.aboutPath | relLangURL }}">{{ $footer.aboutLabel }}</a>{{ end }}
+      {{ if $footer.teachingEnabled }}<a href="{{ $footer.teachingURL }}" target="_blank" rel="noopener">{{ $footer.teachingLabel }}</a>{{ end }}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article class="post-page about-page">
+  <header class="post-header">
+    <div class="post-header-meta">
+      <a href="{{ "" | relLangURL }}" class="back-link">← {{ i18n "backHome" }}</a>
+    </div>
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="post-summary">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

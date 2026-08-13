@@ -1,0 +1,25 @@
+{{- $id := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $id = .Get "id" -}}
+{{- else -}}
+  {{- $id = .Get 0 -}}
+{{- end -}}
+{{- if not $id -}}
+  {{- errorf "youtube shortcode requires a video id: %s" .Position -}}
+{{- end -}}
+{{- $title := "YouTube video" -}}
+{{- if .IsNamedParams -}}
+  {{- $title = .Get "title" | default $title -}}
+{{- else if ge (len .Params) 2 -}}
+  {{- $title = .Get 1 -}}
+{{- end -}}
+<div class="video-embed">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/{{ $id }}"
+    title="{{ $title }}"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>

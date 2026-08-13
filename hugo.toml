@@ -1,0 +1,280 @@
+baseURL = "https://jiaphyper.com"
+languageCode = "zh-cn"
+title = "JiaPhyper"
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+
+[languages.zh]
+  languageCode = "zh-CN"
+  languageName = "中文"
+  weight = 1
+
+[languages.en]
+  languageCode = "en-US"
+  languageName = "English"
+  title = "JiaPhyper"
+  weight = 2
+
+[params]
+  description = "物理、成长、阅读——Jia 的个人空间"
+  author = "Jia"
+
+[params.footer]
+  contactLabel = "Contact"
+  aboutEnabled = true
+  aboutLabel = "About Me"
+  aboutPath = "about/"
+  teachingEnabled = true
+  teachingLabel = "Teaching"
+  teachingURL = "https://alevelphysicsandmaths.com"
+  copyright = "Jia · jiaphyper.com"
+
+[[params.footer.contacts]]
+  enabled = true
+  label = "Email"
+  url = "mailto:jiap.phy@gmail.com"
+  icon = "fa-solid fa-envelope"
+  newTab = false
+  imageURL = ""
+
+
+# [[params.footer.contacts]]
+#   enabled = true
+#   label = "X"
+#   url = "https://x.com/jiaphyper"
+#   icon = "fa-brands fa-x-twitter"
+#   newTab = true
+#   imageURL = ""
+
+[[params.footer.contacts]]
+  enabled = true
+  label = "WeChat"
+  url = ""
+  icon = "fa-brands fa-weixin"
+  newTab = false
+  imageURL = "/images/icons/wechat.png"
+
+
+[[params.footer.contacts]]
+  enabled = true
+  label = "Github"
+  url = "https://github.com/jiaphyper"
+  icon = "fa-brands fa-github"
+  newTab = false
+  imageURL = ""
+
+
+[params.home]
+  eyebrow = "物理 · 成长 · 阅读"
+  title = "JiaPhyper"
+  description = "读论文，写笔记，记录成长。"
+  subdescription = "一个物理老师的个人空间。"
+  asideLabel = "JIA'S NOTES"
+  asideQuote = "Keep Momenta!"
+  asideNote = "Teaching · Reading · Writing"
+  asideTopics = ["物理", "教学", "写作"]
+
+# 栏目开关：改成 false 后，会同时隐藏导航链接、首页按钮和首页对应板块。
+[params.sections.growth]
+  id = "growth"
+  enabled = false
+  weight = 20
+  navLabel = "成长"
+  buttonLabel = "成长文章"
+  homeTitle = "近期文章2"
+  homeLimit = 4
+  secondaryField = "summary"
+  listTitle = "成长"
+  listNoun = "文章"
+  tagGroup = "growth"
+
+[params.sections.papers]
+  id = "papers"
+  enabled = true
+  weight = 10
+  navLabel = "论文笔记"
+  buttonLabel = "物理论文阅读"
+  homeTitle = "论文笔记"
+  homeLimit = 3
+  badgeVariant = "paper"
+  secondaryField = "journal"
+  secondaryStyle = "journal"
+  listTitle = "论文笔记"
+  listNoun = "论文阅读笔记"
+  listMetaField = "journal"    #优先读取论文md 的字段
+  listMetaFallback = "论文"   # 读不到的备用字段     
+  tagGroup = "papers"
+
+[params.sections.pbl]
+  id = "pbl"
+  enabled = false
+  weight = 30
+  navLabel = "PBL 案例"
+  buttonLabel = "PBL 案例"
+  homeTitle = "近期 PBL 案例"
+  homeLimit = 4
+  secondaryField = "summary"
+  listTitle = "PBL 案例"
+  listNoun = "案例"
+  tagGroup = "pbl"
+
+[params.sections.nabokov]
+  id = "nabokov"
+  enabled = true
+  weight = 40
+  navLabel = "Nabokov Cards"
+  buttonLabel = "Nabokov Cards"
+  homeStyle = "nabokov"
+  homeLimit = 2
+  homeEyebrow = "Nabokov Cards"
+  homeTitle = "思想的碎片"
+  homeDescription = "从书里、论文里、视频里摘录的句子，以及自己写下的感悟。用卡片的方式留存，随时取用。"
+  homeButtonLabel = "探索卡片库"
+  listTitle = "思想的碎片"
+  listNoun = "卡片"
+  tagGroup = "nabokov"   # 出现 nabokov 不显示tag 标签
+
+[params.tags]
+  enabled = false
+  navLabel = "标签"
+
+[params.tagGroups.growth]
+  id = "growth"
+  label = "个人成长"
+  weight = 10
+
+[params.tagGroups.papers]
+  id = "papers"
+  label = "论文笔记"
+  weight = 20
+
+[params.tagGroups.pbl]
+  id = "pbl"
+  label = "PBL 案例"
+  weight = 30
+
+[params.tagGroups.nabokov]
+  id = "nabokov"
+  label = "Nabokov Cards"
+  weight = 40
+
+[params.math]
+  enable = true
+
+# 英文站界面配置。文章只有新增对应的 *.en.md 后，才会进入英文站。
+[languages.en.params]
+  description = "Physics, growth, and reading — Jia's personal space"
+  author = "Jia"
+
+[languages.en.params.home]
+  eyebrow = "Physics · Growth · Reading"
+  title = "JiaPhyper"
+  description = "Reading papers, taking notes, and documenting growth."
+  subdescription = "A physics teacher's personal space."
+  asideLabel = "JIA'S NOTES"
+  asideQuote = "Keep Momenta!"
+  asideNote = "Teaching · Reading · Writing"
+  asideTopics = ["Physics", "Teaching", "Writing"]
+
+[languages.en.params.sections.growth]
+  id = "growth"
+  enabled = false
+  weight = 20
+  navLabel = "Growth"
+  buttonLabel = "Growth"
+  homeTitle = "Recent Posts"
+  homeLimit = 4
+  secondaryField = "summary"
+  listTitle = "Growth"
+  listNoun = "posts"
+  tagGroup = "growth"
+
+[languages.en.params.sections.papers]
+  id = "papers"
+  enabled = false
+  weight = 10
+  navLabel = "Paper Notes"
+  buttonLabel = "Paper Notes"
+  homeTitle = "Paper Notes"
+  homeLimit = 3
+  badgeVariant = "paper"
+  secondaryField = "journal"
+  secondaryStyle = "journal"
+  listTitle = "Paper Notes"
+  listNoun = "paper notes"
+  listMetaField = "journal"
+  listMetaFallback = "Paper"
+  tagGroup = "papers"
+
+[languages.en.params.sections.pbl]
+  id = "pbl"
+  enabled = false
+  weight = 30
+  navLabel = "PBL Cases"
+  buttonLabel = "PBL Cases"
+  homeTitle = "Recent PBL Cases"
+  homeLimit = 4
+  secondaryField = "summary"
+  listTitle = "PBL Cases"
+  listNoun = "cases"
+  tagGroup = "pbl"
+
+[languages.en.params.sections.nabokov]
+  id = "nabokov"
+  enabled = false
+  weight = 40
+  navLabel = "Nabokov Cards"
+  buttonLabel = "Nabokov Cards"
+  homeStyle = "nabokov"
+  homeLimit = 2
+  homeEyebrow = "Nabokov Cards"
+  homeTitle = "Fragments of Thought"
+  homeDescription = "Passages and reflections gathered from books, papers, and videos, kept as cards to revisit."
+  homeButtonLabel = "Explore the Cards"
+  listTitle = "Fragments of Thought"
+  listNoun = "cards"
+  tagGroup = "nabokov"
+
+[languages.en.params.tags]
+  enabled = true
+  navLabel = "Tags"
+
+[languages.en.params.tagGroups.growth]
+  id = "growth"
+  label = "Personal Growth"
+  weight = 10
+
+[languages.en.params.tagGroups.papers]
+  id = "papers"
+  label = "Paper Notes"
+  weight = 20
+
+[languages.en.params.tagGroups.pbl]
+  id = "pbl"
+  label = "PBL Cases"
+  weight = 30
+
+[languages.en.params.tagGroups.nabokov]
+  id = "nabokov"
+  label = "Nabokov Cards"
+  weight = 40
+
+[languages.en.params.math]
+  enable = true
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+  block  = [["$$", "$$"]]
+  inline = [["$", "$"], ["\\(", "\\)"]]
+
+[markup.goldmark.renderer]
+  unsafe = true   # allows raw HTML in markdown (needed for image captions etc)
+
+[markup.goldmark.renderHooks.link]
+  useEmbedded = "always"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
