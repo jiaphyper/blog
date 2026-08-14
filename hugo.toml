@@ -103,7 +103,7 @@ defaultContentLanguageInSubdir = false
   listNoun = "论文阅读笔记"
   listMetaField = "journal"    #优先读取论文md 的字段
   listMetaFallback = "论文"   # 读不到的备用字段     
-  tagGroup = "papers"
+  tagGroup = "physics"
 
 [params.sections.pbl]
   id = "pbl"
@@ -117,6 +117,20 @@ defaultContentLanguageInSubdir = false
   listTitle = "PBL 案例"
   listNoun = "案例"
   tagGroup = "pbl"
+
+[params.sections.research]
+  id = "research"
+  enabled = true
+  weight = 30
+  navLabel = "小项目研究"
+  buttonLabel = "小项目研究"
+  homeTitle = "小项目研究"
+  homeLimit = 4
+  secondaryField = "summary"
+  listTitle = "小项目研究"
+  listNoun = "项目研究"
+  tagGroup = "physics"
+
 
 [params.sections.nabokov]
   id = "nabokov"
@@ -143,10 +157,15 @@ defaultContentLanguageInSubdir = false
   label = "个人成长"
   weight = 10
 
-[params.tagGroups.papers]
-  id = "papers"
-  label = "论文笔记"
+[params.tagGroups.physics]
+  id = "physics"
+  label = "物理"
   weight = 20
+
+# [params.tagGroups.research]
+#   id = "research"
+#   label = "小项目研究"
+#   weight = 25
 
 [params.tagGroups.pbl]
   id = "pbl"
@@ -219,6 +238,21 @@ defaultContentLanguageInSubdir = false
   listNoun = "cases"
   tagGroup = "pbl"
 
+[languages.en.params.sections.research]
+  id = "research"
+  enabled = true
+  weight = 30
+  navLabel = "MiniProjects"
+  buttonLabel = "MiniProjects"
+  homeTitle = "Mini Projects"
+  homeLimit = 4
+  secondaryField = "summary"
+  listTitle = "Mini Projects"
+  listNoun = "Project Notes"
+  tagGroup = "research"
+
+
+
 [languages.en.params.sections.nabokov]
   id = "nabokov"
   enabled = false
@@ -236,7 +270,7 @@ defaultContentLanguageInSubdir = false
   tagGroup = "nabokov"
 
 [languages.en.params.tags]
-  enabled = true
+  enabled = false
   navLabel = "Tags"
 
 [languages.en.params.tagGroups.growth]
@@ -248,6 +282,11 @@ defaultContentLanguageInSubdir = false
   id = "papers"
   label = "Paper Notes"
   weight = 20
+
+[languages.en.params.tagGroups.research]
+  id = "research"
+  label = "Mini Projects"
+  weight = 25
 
 [languages.en.params.tagGroups.pbl]
   id = "pbl"

@@ -16,9 +16,8 @@
         <span class="post-tag {{ if eq $sectionConfig.badgeVariant "paper" }}post-tag-paper{{ end }}">
           {{ with index .Params $sectionConfig.listMetaField }}{{ . }}{{ else }}{{ $sectionConfig.listMetaFallback }}{{ end }}
         </span>
-        {{ else }}
-        {{ range first 1 (.GetTerms "tags") }}<a href="{{ .RelPermalink }}{{ $tagAnchor }}" class="post-tag">{{ .LinkTitle }}</a>{{ end }}
         {{ end }}
+        {{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}{{ $tagAnchor }}" class="post-tag">{{ .LinkTitle }}</a>{{ end }}
         <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
       </div>
       <h3 class="post-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>

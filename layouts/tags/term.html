@@ -25,10 +25,6 @@
 
     {{ if gt (len $groupPages) 0 }}
     <section class="taxonomy-group" id="tag-group-{{ $group.id }}">
-      <div class="taxonomy-group-header">
-        <h2>{{ $group.label }}</h2>
-        <span>{{ i18n "postCount" (dict "Count" (len $groupPages)) }}</span>
-      </div>
       <div class="post-list">
         {{ range sort $groupPages "Date" "desc" }}
         <article class="post-item">
