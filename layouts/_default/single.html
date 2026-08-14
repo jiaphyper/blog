@@ -42,5 +42,22 @@
   <div class="post-content">
     {{ .Content }}
   </div>
+
+  {{ if or .PrevInSection .NextInSection }}
+  <nav class="post-nav">
+    {{ with .PrevInSection }}
+    <a href="{{ .RelPermalink }}" class="post-nav-link post-nav-prev">
+      <span class="post-nav-label">← {{ i18n "prevPost" }}</span>
+      <span class="post-nav-title">{{ .Title }}</span>
+    </a>
+    {{ end }}
+    {{ with .NextInSection }}
+    <a href="{{ .RelPermalink }}" class="post-nav-link post-nav-next">
+      <span class="post-nav-label">{{ i18n "nextPost" }} →</span>
+      <span class="post-nav-title">{{ .Title }}</span>
+    </a>
+    {{ end }}
+  </nav>
+  {{ end }}
 </article>
 {{ end }}

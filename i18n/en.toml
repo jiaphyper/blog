@@ -50,6 +50,18 @@ other = "{{ .Count }} {{ .Noun }}"
 [defaultArticle]
 other = "posts"
 
+[prevPost]
+other = "Previous"
+
+[nextPost]
+other = "Next"
+
+[notFoundHeading]
+other = "Oops... you've wandered into the knowledge desert."
+
+[notFoundBackNow]
+other = "Go home now →"
+
 [nabokovTitle]
 other = "Fragments of Thought"
 

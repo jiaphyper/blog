@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="notfound-page">
+  <div class="notfound-code">404</div>
+  <h1 class="notfound-title">{{ i18n "notFoundHeading" }}</h1>
+  <p class="notfound-redirect">
+    {{ if eq .Site.Language.Lang "en" }}
+    Redirecting home in <span id="notfoundCount">3</span>s…
+    {{ else }}
+    <span id="notfoundCount">3</span> 秒后自动跳转回首页…
+    {{ end }}
+  </p>
+  <a href="{{ "" | relLangURL }}" class="btn btn-primary notfound-btn">{{ i18n "notFoundBackNow" }}</a>
+</section>
+
+<script>
+(() => {
+  var countEl = document.getElementById('notfoundCount');
+  var target = "{{ "" | relLangURL }}";
+  var remaining = 3;
+  var timer = setInterval(function () {
+    remaining -= 1;
+    if (countEl) countEl.textContent = Math.max(remaining, 0);
+    if (remaining <= 0) {
+      clearInterval(timer);
+      window.location.href = target;
+    }
+  }, 1000);
+})();
+</script>
+{{ end }}

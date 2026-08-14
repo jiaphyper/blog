@@ -50,6 +50,18 @@ other = "{{ .Count }} 篇{{ .Noun }}"
 [defaultArticle]
 other = "文章"
 
+[prevPost]
+other = "上一篇"
+
+[nextPost]
+other = "下一篇"
+
+[notFoundHeading]
+other = "Oops...来到了知识的荒漠"
+
+[notFoundBackNow]
+other = "现在就回首页 →"
+
 [nabokovTitle]
 other = "思想的碎片"
 
