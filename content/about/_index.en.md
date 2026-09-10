@@ -13,7 +13,6 @@ This blog is my personal workbench. I use it to document:
 - Notes from physics and education papers
 - Teaching designs, PBL cases, and classroom observations
 - Reflections on reading, writing, and personal growth
-- Sentences and idea cards worth returning to
 
 Writing is not a way to display answers for me. It is a way to continue thinking. Many things reveal whether I truly understand them only after I try to write them down.
 

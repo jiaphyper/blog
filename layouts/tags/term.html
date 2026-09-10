@@ -5,7 +5,7 @@
 {{ $visibleCount := 0 }}
 {{ range $page := $termPages }}
   {{ $sectionConfig := index $site.Params.sections $page.Section }}
-  {{ if and $sectionConfig.enabled (ne $page.Section "nabokov") }}{{ $visibleCount = add $visibleCount 1 }}{{ end }}
+  {{ if $sectionConfig.enabled }}{{ $visibleCount = add $visibleCount 1 }}{{ end }}
 {{ end }}
 
 <section class="list-page">
@@ -18,7 +18,7 @@
     {{ $groupPages := slice }}
     {{ range $page := $termPages }}
       {{ $sectionConfig := index $site.Params.sections $page.Section }}
-      {{ if and $sectionConfig.enabled (ne $page.Section "nabokov") (eq $sectionConfig.tagGroup $group.id) }}
+      {{ if and $sectionConfig.enabled (eq $sectionConfig.tagGroup $group.id) }}
         {{ $groupPages = $groupPages | append $page }}
       {{ end }}
     {{ end }}

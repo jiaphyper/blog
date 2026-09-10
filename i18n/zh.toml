@@ -61,25 +61,3 @@ other = "Oops...来到了知识的荒漠"
 
 [notFoundBackNow]
 other = "现在就回首页 →"
-
-[nabokovTitle]
-other = "思想的碎片"
-
-[nabokovAbout]
-other = "纳博科夫用卡片写小说——他把想法、场景、句子写在索引卡上，随时取用、重新排列。这里是我的卡片库：从书里、论文里、视频里摘录的句子，以及自己写下的感悟片段。不成体系，但每一张都是真实的触动。"
-
-[drawCards]
-other = "随机取用 3–5 张"
-
-[drawHint]
-other = "每次随机从卡片库中抽取"
-
-[todayCards]
-other = "今日卡片"
-
-[drawAgain]
-other = "再抽一次 →"
-
-[allCards]
-one = "全部卡片 · {{ .Count }} 张"
-other = "全部卡片 · {{ .Count }} 张"

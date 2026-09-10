@@ -30,11 +30,7 @@
 
     {{ with .GetTerms "tags" }}
     <div class="post-tags">
-      {{ if eq $.Section "nabokov" }}
-        {{ range . }}<span class="post-tag">{{ .LinkTitle }}</span>{{ end }}
-      {{ else }}
-        {{ range . }}<a href="{{ .RelPermalink }}{{ $tagAnchor }}" class="post-tag">{{ .LinkTitle }}</a>{{ end }}
-      {{ end }}
+      {{ range . }}<a href="{{ .RelPermalink }}{{ $tagAnchor }}" class="post-tag">{{ .LinkTitle }}</a>{{ end }}
     </div>
     {{ end }}
   </header>

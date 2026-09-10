@@ -132,22 +132,6 @@ defaultContentLanguageInSubdir = false
   tagGroup = "physics"
 
 
-[params.sections.nabokov]
-  id = "nabokov"
-  enabled = true
-  weight = 40
-  navLabel = "Nabokov Cards"
-  buttonLabel = "Nabokov Cards"
-  homeStyle = "nabokov"
-  homeLimit = 2
-  homeEyebrow = "Nabokov Cards"
-  homeTitle = "思想的碎片"
-  homeDescription = "从书里、论文里、视频里摘录的句子，以及自己写下的感悟。用卡片的方式留存，随时取用。"
-  homeButtonLabel = "探索卡片库"
-  listTitle = "思想的碎片"
-  listNoun = "卡片"
-  tagGroup = "nabokov"   # 出现 nabokov 不显示tag 标签
-
 [params.tags]
   enabled = false
   navLabel = "标签"
@@ -171,11 +155,6 @@ defaultContentLanguageInSubdir = false
   id = "pbl"
   label = "PBL 案例"
   weight = 30
-
-[params.tagGroups.nabokov]
-  id = "nabokov"
-  label = "Nabokov Cards"
-  weight = 40
 
 [params.math]
   enable = true
@@ -253,22 +232,6 @@ defaultContentLanguageInSubdir = false
 
 
 
-[languages.en.params.sections.nabokov]
-  id = "nabokov"
-  enabled = false
-  weight = 40
-  navLabel = "Nabokov Cards"
-  buttonLabel = "Nabokov Cards"
-  homeStyle = "nabokov"
-  homeLimit = 2
-  homeEyebrow = "Nabokov Cards"
-  homeTitle = "Fragments of Thought"
-  homeDescription = "Passages and reflections gathered from books, papers, and videos, kept as cards to revisit."
-  homeButtonLabel = "Explore the Cards"
-  listTitle = "Fragments of Thought"
-  listNoun = "cards"
-  tagGroup = "nabokov"
-
 [languages.en.params.tags]
   enabled = false
   navLabel = "Tags"
@@ -292,11 +255,6 @@ defaultContentLanguageInSubdir = false
   id = "pbl"
   label = "PBL Cases"
   weight = 30
-
-[languages.en.params.tagGroups.nabokov]
-  id = "nabokov"
-  label = "Nabokov Cards"
-  weight = 40
 
 [languages.en.params.math]
   enable = true

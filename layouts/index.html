@@ -45,27 +45,6 @@
 {{ range $section := $enabledSections }}
   {{ $sectionPages := where $.Site.RegularPages "Section" $section.id }}
   {{ $homeLimit := $section.homeLimit | default 4 }}
-  {{ if eq $section.homeStyle "nabokov" }}
-<section class="home-nabokov">
-  <div class="home-nabokov-inner">
-    <div class="home-nabokov-text">
-      <div class="nabokov-eyebrow">{{ $section.homeEyebrow }}</div>
-      <h2>{{ $section.homeTitle }}</h2>
-      <p>{{ $section.homeDescription }}</p>
-      {{ $sectionPath := printf "%s/" $section.id }}
-      <a href="{{ $sectionPath | relLangURL }}" class="btn btn-primary">{{ $section.homeButtonLabel }}</a>
-    </div>
-    <div class="home-nabokov-cards">
-      {{ range first $homeLimit $sectionPages.ByDate.Reverse }}
-      <div class="nabokov-teaser-card">
-        <p class="ntc-quote">{{ .Params.quote }}</p>
-        {{ with .Params.source }}<span class="ntc-source">— {{ . }}</span>{{ end }}
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-  {{ else }}
 <section class="home-section">
   <div class="home-section-header">
     <h2>{{ $section.homeTitle | default $section.navLabel }}</h2>
@@ -87,7 +66,6 @@
     {{ end }}
   </div>
 </section>
-  {{ end }}
 {{ end }}
 
 {{ end }}

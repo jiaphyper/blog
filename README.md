@@ -6,7 +6,6 @@
 - [目录结构](#目录结构)
 - [创建成长文章](#创建成长文章)
 - [创建论文笔记](#创建论文笔记)
-- [创建 Nabokov 卡片](#创建-nabokov-卡片)
 - [本地图片](#本地图片)
 - [数学公式](#数学公式)
 - [插入 YouTube 视频](#插入-youtube-视频)
@@ -36,8 +35,7 @@ jiaphyper/
 ├── content/
 │   ├── _index.md          ← 首页
 │   ├── growth/            ← 成长文章
-│   ├── papers/            ← 论文笔记
-│   └── nabokov/           ← Nabokov 卡片
+│   └── papers/            ← 论文笔记
 ├── layouts/               ← 页面模板
 ├── static/
 │   ├── css/main.css       ← 样式
@@ -107,47 +105,6 @@ draft: false
 ```
 
 `doi` 填写后，页面顶部会自动显示论文信息条，并生成跳转链接。
-
----
-
-## 创建 Nabokov 卡片
-
-### 新建
-
-```bash
-hugo new nabokov/card-006.md
-```
-
-### Front matter 字段
-
-```yaml
----
-title: "card-006"
-date: 2026-05-14
-type: "quote"          # quote（摘录）| reflection（感悟）| paper（论文）| video（视频）
-quote: "卡片的主要内容，显示在卡片正中。"
-source: "来源，如作者名、书名、期刊"
-tags: ["物理", "思考"]
-draft: false
----
-
-<!-- 可选：在这里写对这张卡片的补充感悟，会显示在卡片底部 -->
-```
-
-### 字段说明
-
-| 字段 | 必填 | 说明 |
-|------|------|------|
-| `quote` | ✓ | 卡片主要内容 |
-| `source` | 建议填 | 来源，显示在引言下方 |
-| `type` | 建议填 | 决定卡片标签颜色和筛选分类 |
-| `tags` | 可选 | 显示在卡片底部 |
-
-### Nabokov Cards 页面功能
-
-- **随机取用 3–5 张**：点击按钮从全部卡片里随机抽取，抽到的卡片用绿色高亮显示
-- **再抽一次**：重新随机抽取
-- **筛选**：按 `type` 筛选显示全部 / 摘录 / 感悟 / 论文 / 视频
 
 ---
 
@@ -288,7 +245,7 @@ title: "PBL 案例"
   navLabel = "标签"
 ```
 
-文章及卡片中的标签可以点击。`/tags/` 显示所有标签，进入某个标签后会显示
+文章中的标签可以点击。`/tags/` 显示所有标签，进入某个标签后会显示
 包含该标签的全部已启用栏目内容。
 
 标签分组在 `[params.tagGroups.分组名]` 中配置：
@@ -306,8 +263,7 @@ title: "PBL 案例"
 ```
 
 例如将 PBL 的 `tagGroup` 从 `"pbl"` 改成 `"growth"`，PBL 标签就会归入
-“个人成长”分组。Nabokov 使用独立的 `"nabokov"` 分组，不会与其他栏目混合；
-栏目关闭时，它的标签分组也不会显示。
+“个人成长”分组。栏目关闭时，它的标签分组也不会显示。
 
 ---
 
@@ -443,7 +399,6 @@ vercel --prod
 |------|------|
 | 新建成长文章 | `hugo new growth/slug.md` |
 | 新建论文笔记 | `hugo new papers/slug.md` |
-| 新建 Nabokov 卡片 | `hugo new nabokov/card-xxx.md` |
 | 设为草稿（不发布） | `draft: true` |
 | 插入本地图片 | 图片放 `static/images/`，用 `/images/xxx.jpg` 引用 |
 | 行内数学公式 | `$公式$` |

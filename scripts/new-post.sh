@@ -7,8 +7,8 @@ set -o pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
-SECTIONS=(growth papers pbl research nabokov)
-SECTION_LABELS=("成长 growth" "论文笔记 papers" "PBL 案例 pbl" "小项目研究 research" "Nabokov 卡片 nabokov")
+SECTIONS=(growth papers pbl research)
+SECTION_LABELS=("成长 growth" "论文笔记 papers" "PBL 案例 pbl" "小项目研究 research")
 
 CREATED_FILES=()
 CREATED_DIRS=()

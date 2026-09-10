@@ -14,7 +14,7 @@
       {{ $groupCount := 0 }}
       {{ range $page := $term.Pages }}
         {{ $sectionConfig := index $site.Params.sections $page.Section }}
-        {{ if and $sectionConfig.enabled (ne $page.Section "nabokov") (eq $sectionConfig.tagGroup $group.id) }}
+        {{ if and $sectionConfig.enabled (eq $sectionConfig.tagGroup $group.id) }}
           {{ $groupCount = add $groupCount 1 }}
         {{ end }}
       {{ end }}
